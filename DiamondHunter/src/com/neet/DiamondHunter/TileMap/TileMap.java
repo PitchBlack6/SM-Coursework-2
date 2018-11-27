@@ -128,7 +128,8 @@ public class TileMap {
 		}
 		
 	}
-	
+	public Tile[][] getTiles(){ return tiles; } //modified
+	public int[][] getMap(){ return map; } //modified
 	public int getTileSize() { return tileSize; }
 	public int getx() { return x; }
 	public int gety() { return y; }

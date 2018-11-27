@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.MapViewer.Controller">
+   <center>
+      <Canvas fx:id="MapCanvas" height="640.0" width="640.0" BorderPane.alignment="CENTER" />
+   </center>
+   <right>
+      <Pane prefHeight="640.0" prefWidth="197.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="26.0" layoutY="25.0" mnemonicParsing="false" text="Set Position of Axe" />
+            <Button layoutX="23.0" layoutY="78.0" mnemonicParsing="false" text="Set Position of Boat" />
+         </children>
+      </Pane>
+   </right>
+</BorderPane>
