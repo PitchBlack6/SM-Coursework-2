@@ -19,7 +19,7 @@
       <children>
         <Button layoutX="38.0" layoutY="25.0" mnemonicParsing="false" onAction="#setAxe" text="Set Position of Axe" />
         <Button layoutX="37.0" layoutY="78.0" mnemonicParsing="false" onAction="#setBoat" text="Set Position of Boat" />
-        <Text fx:id="actiontarget" layoutX="87.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" />
+        <Text fx:id="actiontarget" layoutX="27.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" />
       </children>
     </Pane>
   </right>
