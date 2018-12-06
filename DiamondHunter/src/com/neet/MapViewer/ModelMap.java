@@ -20,7 +20,7 @@ public class ModelMap {
 		tileMap = new TileMap(tileSize);
 		tileMap.loadTiles("/Tilesets/testtileset.gif");
 		tileMap.loadMap("/Maps/testmap.map");
-		
+
 		loadTileFile();
 		loadMapFile();
 		
