@@ -51,7 +51,7 @@ public class ModelMap {
 	public void draw(GraphicsContext a) {
 		for (int i=0; i<map.length; i++) {
 			for (int j=0; j<map.length; j++) {
-				int temp2 = map[i][j];
+				int temp2 = map[j][i];
 				int row = temp2/20;
 				int col = temp2%20;
 				a.drawImage(tileType[row][col], i*tileSize, j*tileSize);

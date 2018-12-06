@@ -3,12 +3,12 @@ package com.neet.MapViewer;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-
 public class MapMain extends Application{
 	
 	public Stage primaryStage; 
@@ -25,6 +25,7 @@ public class MapMain extends Application{
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene); 
 		primaryStage.show();
+
 	}
 	
 	public void initLayout() {
@@ -41,8 +42,5 @@ public class MapMain extends Application{
 	public static void main(String args[]) {
 		launch(args);
 	}
-	
-	
-	
 
 }
