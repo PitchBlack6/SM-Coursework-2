@@ -2,10 +2,12 @@ package com.neet.MapViewer;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -30,6 +32,12 @@ public class Controller {
         actiontarget.setText("Click to set Boat position.");
         drawItem("boat",20,20); // 20 is in tiles
     }
+    @FXML protected void mousePosition(MouseEvent event) {
+        	int mousex = (int) (event.getScreenX()/1)-0; 
+        	int mousey = (int) (event.getScreenY()/1)-0; 
+            actiontarget.setText("Mouse click detected! \n Coordiantes: "+ String.valueOf(mousex) + ", " + String.valueOf(mousey));
+        }
+    
 	
 	private GraphicsContext graphics;
 	
@@ -46,6 +54,7 @@ public class Controller {
 		modelMap.draw(graphics);
 
 	}
+
 	
 	private void drawItem(String item, int x, int y) { //draw items
 		if (item.equals("axe"))	
