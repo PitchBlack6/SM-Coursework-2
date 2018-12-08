@@ -26,7 +26,7 @@ public class Controller {
     private Image boatImage;
     public int mousex;
     public int mousey;
-    public int itemID;
+    public int itemID = 0;
     
     @FXML protected void setAxe(ActionEvent event) {
         actiontarget.setText("Click to set Axe position.");
@@ -39,8 +39,8 @@ public class Controller {
     @FXML protected void mousePosition(MouseEvent event) {
         	mousex = (int) (event.getScreenX()/16-34); 
         	mousey = (int) (event.getScreenY()/16-10); 
-            drawItem(itemID,mousex,mousey); //test draw s axe to the middle of the map
         	actiontarget.setText(String.valueOf(mousex) + ", " + String.valueOf(mousey));
+            drawItem(itemID,mousex,mousey); //test draw s axe to the middle of the map
             
         }
     
@@ -62,14 +62,16 @@ public class Controller {
 	}
 	
 	private void drawItem(int itemID, int x, int y) { //draw items
-		if (itemID == 1)	
-		{
-			graphics.drawImage(axeImage, x*16, y*16);//*16 to convert to pixels
+		switch (itemID) {
+		case 1: graphics.drawImage(axeImage, x*16, y*16);
+				actiontarget.setText("Placed Axe.");
+				break;
+		case 2: graphics.drawImage(boatImage, x*16, y*16);
+				actiontarget.setText("Placed Boat.");
+				break;
+		default: actiontarget.setText("No item selected.");
+				break;
 		}
-		else if (itemID == 2)	
-			{
-			graphics.drawImage(boatImage, x*16, y*16);
-			}
 	}
 	
 	
