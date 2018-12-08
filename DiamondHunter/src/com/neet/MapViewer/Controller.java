@@ -2,17 +2,14 @@ package com.neet.MapViewer;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import java.awt.event.*;  
 
 public class Controller {
 	
@@ -39,7 +36,6 @@ public class Controller {
     @FXML protected void mousePosition(MouseEvent event) {
         	mousex = (int) (event.getScreenX()/16-34); 
         	mousey = (int) (event.getScreenY()/16-10); 
-        	actiontarget.setText(String.valueOf(mousex) + ", " + String.valueOf(mousey));
             drawItem(itemID,mousex,mousey); //test draw s axe to the middle of the map
             
         }
