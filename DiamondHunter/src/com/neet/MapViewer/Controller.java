@@ -2,17 +2,14 @@ package com.neet.MapViewer;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import java.awt.event.*;  
 
 public class Controller {
 	
@@ -39,7 +36,6 @@ public class Controller {
     @FXML protected void mousePosition(MouseEvent event) {
         	mousex = (int) (event.getScreenX()/16-34); 
         	mousey = (int) (event.getScreenY()/16-10); 
-        	actiontarget.setText(String.valueOf(mousex) + ", " + String.valueOf(mousey));
             drawItem(itemID,mousex,mousey); //test draw s axe to the middle of the map
             
         }
@@ -63,13 +59,15 @@ public class Controller {
 	
 	private void drawItem(int itemID, int x, int y) { //draw items
 		switch (itemID) {
+		case 0: actiontarget.setText("No item selected");
+				break;
 		case 1: graphics.drawImage(axeImage, x*16, y*16);
 				actiontarget.setText("Placed Axe.");
 				break;
 		case 2: graphics.drawImage(boatImage, x*16, y*16);
 				actiontarget.setText("Placed Boat.");
 				break;
-		default: actiontarget.setText("No item selected.");
+		default: actiontarget.setText("Invalid placement.");
 				break;
 		}
 	}
