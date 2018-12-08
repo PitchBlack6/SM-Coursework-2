@@ -59,13 +59,15 @@ public class Controller {
 	
 	private void drawItem(int itemID, int x, int y) { //draw items
 		switch (itemID) {
+		case 0: actiontarget.setText("No item selected");
+				break;
 		case 1: graphics.drawImage(axeImage, x*16, y*16);
 				actiontarget.setText("Placed Axe.");
 				break;
 		case 2: graphics.drawImage(boatImage, x*16, y*16);
 				actiontarget.setText("Placed Boat.");
 				break;
-		default: actiontarget.setText("No item selected.");
+		default: actiontarget.setText("Invalid placement.");
 				break;
 		}
 	}
