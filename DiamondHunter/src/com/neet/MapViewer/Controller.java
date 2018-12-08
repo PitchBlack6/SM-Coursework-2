@@ -7,10 +7,12 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import java.awt.event.*;  
 
 public class Controller {
 	
@@ -22,20 +24,24 @@ public class Controller {
     @FXML private ImageView item; //new image view
     private Image axeImage;
     private Image boatImage;
+    public int mousex;
+    public int mousey;
+    public int itemID;
     
     @FXML protected void setAxe(ActionEvent event) {
         actiontarget.setText("Click to set Axe position.");
-        drawItem("axe",20,20); //test draws axe to the middle of the map
-        						// just need to change the 20s to the mouse coordinates
+        itemID = 1;
     }
     @FXML protected void setBoat(ActionEvent event) {
         actiontarget.setText("Click to set Boat position.");
-        drawItem("boat",20,20); // 20 is in tiles
+        itemID = 2;
     }
     @FXML protected void mousePosition(MouseEvent event) {
-        	int mousex = (int) (event.getScreenX()/1)-0; 
-        	int mousey = (int) (event.getScreenY()/1)-0; 
-            actiontarget.setText("Mouse click detected! \n Coordiantes: "+ String.valueOf(mousex) + ", " + String.valueOf(mousey));
+        	mousex = (int) (event.getScreenX()/16-34); 
+        	mousey = (int) (event.getScreenY()/16-10); 
+            drawItem(itemID,mousex,mousey); //test draw s axe to the middle of the map
+        	actiontarget.setText(String.valueOf(mousex) + ", " + String.valueOf(mousey));
+            
         }
     
 	
@@ -54,16 +60,17 @@ public class Controller {
 		modelMap.draw(graphics);
 
 	}
-
 	
-	private void drawItem(String item, int x, int y) { //draw items
-		if (item.equals("axe"))	
+	private void drawItem(int itemID, int x, int y) { //draw items
+		if (itemID == 1)	
 		{
 			graphics.drawImage(axeImage, x*16, y*16);//*16 to convert to pixels
 		}
-		else 
+		else if (itemID == 2)	
 			{
 			graphics.drawImage(boatImage, x*16, y*16);
 			}
 	}
+	
+	
 }
