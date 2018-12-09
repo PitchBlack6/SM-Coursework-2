@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -20,16 +21,25 @@ public class Controller {
     @FXML private ImageView item; //new image view
     private Image axeImage;
     private Image boatImage;
+    public int mousex;
+    public int mousey;
+    public int itemID = 0;
     
     @FXML protected void setAxe(ActionEvent event) {
         actiontarget.setText("Click to set Axe position.");
-        drawItem("axe",20,20); //test draws axe to the middle of the map
-        						// just need to change the 20s to the mouse coordinates
+        itemID = 1;
     }
     @FXML protected void setBoat(ActionEvent event) {
         actiontarget.setText("Click to set Boat position.");
-        drawItem("boat",20,20); // 20 is in tiles
+        itemID = 2;
     }
+    @FXML protected void mousePosition(MouseEvent event) {
+        	mousex = (int) (event.getScreenX()/16-34); 
+        	mousey = (int) (event.getScreenY()/16-10); 
+            drawItem(itemID,mousex,mousey); //test draw s axe to the middle of the map
+            
+        }
+    
 	
 	private GraphicsContext graphics;
 	
@@ -47,14 +57,20 @@ public class Controller {
 
 	}
 	
-	private void drawItem(String item, int x, int y) { //draw items
-		if (item.equals("axe"))	
-		{
-			graphics.drawImage(axeImage, x*16, y*16);//*16 to convert to pixels
+	private void drawItem(int itemID, int x, int y) { //draw items
+		switch (itemID) {
+		case 0: actiontarget.setText("No item selected");
+				break;
+		case 1: graphics.drawImage(axeImage, x*16, y*16);
+				actiontarget.setText("Placed Axe.");
+				break;
+		case 2: graphics.drawImage(boatImage, x*16, y*16);
+				actiontarget.setText("Placed Boat.");
+				break;
+		default: actiontarget.setText("Invalid placement.");
+				break;
 		}
-		else 
-			{
-			graphics.drawImage(boatImage, x*16, y*16);
-			}
 	}
+	
+	
 }

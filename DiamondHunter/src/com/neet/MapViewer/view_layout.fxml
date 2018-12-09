@@ -12,7 +12,7 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.neet.MapViewer.Controller">
   <center>
-    <Canvas fx:id="MapCanvas" height="640.0" width="640.0" BorderPane.alignment="CENTER" />
+    <Canvas fx:id="MapCanvas" height="640.0" onMouseClicked="#mousePosition" width="640.0" BorderPane.alignment="CENTER" />
   </center>
   <right>
     <Pane prefHeight="640.0" prefWidth="197.0" BorderPane.alignment="CENTER">
