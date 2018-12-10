@@ -25,20 +25,29 @@ public class Controller {
     public int mousey;
     public int itemID = 0; //creates flag to track current item ID
     
+    
     @FXML protected void setAxe(ActionEvent event) {
         actiontarget.setText("Click to set Axe position.");
+        itemID = 1;
+          
+    }
+    @FXML protected void mousePosition(MouseEvent event) {
+        	int x = (int) (event.getSceneX()/16); 
+        	int y = (int) (event.getSceneY()/16);
+        	if(checkTile(x,y)) {
+        		mousex = x;
+        		mousey = y;
+        		drawItem(itemID,mousex,mousey); //test draw s axe to the middle of the map
+        	}
+        	else {
+        		actiontarget.setText("Invalid placement");
+        	}
         itemID = 1; //sets itemID to ID for axe
     }
     @FXML protected void setBoat(ActionEvent event) {
         actiontarget.setText("Click to set Boat position.");
         itemID = 2; //sets itemID to ID for boat
     }
-    @FXML protected void mousePosition(MouseEvent event) {
-        	mousex = (int) (event.getScreenX()/16-34); // divide by 16 to make the coordinates the correct scale, -34 to correct for size of screen
-        	mousey = (int) (event.getScreenY()/16-10); 
-            drawItem(itemID,mousex,mousey); //draws the item to the mouseclick
-            
-        }
     
 	
 	private GraphicsContext graphics;
@@ -67,10 +76,14 @@ public class Controller {
 		case 2: graphics.drawImage(boatImage, x*16, y*16);
 				actiontarget.setText("Placed Boat.");
 				break;
-		default: actiontarget.setText("Invalid placement.");
-				break;
 		}
 	}
+	
+	private boolean checkTile(int x, int y) {
+		return modelMap.map[y][x] < 20;
+	}
+	
+	
 	
 	
 }
