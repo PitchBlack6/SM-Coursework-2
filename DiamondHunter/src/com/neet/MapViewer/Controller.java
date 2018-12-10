@@ -25,28 +25,8 @@ public class Controller {
     public int mousey;
     public int itemID = 0; //creates flag to track current item ID
     
-    
     @FXML protected void setAxe(ActionEvent event) {
         actiontarget.setText("Click to set Axe position.");
-        itemID = 1;
-          
-    }
-    @FXML protected void setBoat(ActionEvent event) {
-        actiontarget.setText("Click to set Boat position.");
-        itemID = 2;
-       
-    }
-    @FXML protected void mousePosition(MouseEvent event) {
-        	int x = (int) (event.getSceneX()/16); 
-        	int y = (int) (event.getSceneY()/16);
-        	if(checkTile(x,y)) {
-        		mousex = x;
-        		mousey = y;
-        		drawItem(mousex,mousey); //test draw s axe to the middle of the map
-        	}
-        	else {
-        		actiontarget.setText("Invalid placement");
-        	}
         itemID = 1; //sets itemID to ID for axe
     }
     @FXML protected void setBoat(ActionEvent event) {
@@ -71,7 +51,6 @@ public class Controller {
 		boatImage = SwingFXUtils.toFXImage(Content.ITEMS[1][0],null); //assign converted boat buffered image to boat image
 	}
 	
-	private void drawItem(int x, int y) { //draw items
 	public void initialize() {
 		graphics = MapCanvas.getGraphicsContext2D();
 		modelMap.draw(graphics);
@@ -88,14 +67,10 @@ public class Controller {
 		case 2: graphics.drawImage(boatImage, x*16, y*16);
 				actiontarget.setText("Placed Boat.");
 				break;
+		default: actiontarget.setText("Invalid placement.");
+				break;
 		}
 	}
-	
-	private boolean checkTile(int x, int y) {
-		return modelMap.map[y][x] < 20;
-	}
-	
-	
 	
 	
 }
