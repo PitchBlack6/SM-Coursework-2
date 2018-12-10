@@ -44,9 +44,11 @@ public class Controller {
         	if(checkTile(x,y)) {
         		mousex = x;
         		mousey = y;
+        		drawItem(mousex,mousey); //test draw s axe to the middle of the map
         	}
-            drawItem(itemID,mousex,mousey); //test draw s axe to the middle of the map
-            
+        	else {
+        		actiontarget.setText("Invalid placement");
+        	}
         }
 
 	
@@ -63,7 +65,7 @@ public class Controller {
 		boatImage = SwingFXUtils.toFXImage(Content.ITEMS[1][0],null); //assign converted boat buffered image to boat image
 	}
 	
-	private void drawItem(int itemID, int x, int y) { //draw items
+	private void drawItem(int x, int y) { //draw items
 		switch (itemID) {
 		case 0: actiontarget.setText("No item selected");
 				break;
@@ -72,8 +74,6 @@ public class Controller {
 				break;
 		case 2: graphics.drawImage(boatImage, x*16, y*16);
 				actiontarget.setText("Placed Boat.");
-				break;
-		default: actiontarget.setText("Invalid placement.");
 				break;
 		}
 	}
