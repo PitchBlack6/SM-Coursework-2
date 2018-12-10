@@ -19,13 +19,11 @@ public class Controller {
     @FXML private Text actiontarget;
     
     @FXML private ImageView item; //new image view
-	private GraphicsContext graphics;
-	private ModelMap modelMap;
     private Image axeImage;
     private Image boatImage;
     public int mousex;
     public int mousey;
-    public int itemID = 0;
+    public int itemID = 0; //creates flag to track current item ID
     
     
     @FXML protected void setAxe(ActionEvent event) {
@@ -49,15 +47,23 @@ public class Controller {
         	else {
         		actiontarget.setText("Invalid placement");
         	}
+        itemID = 1; //sets itemID to ID for axe
+    }
+    @FXML protected void setBoat(ActionEvent event) {
+        actiontarget.setText("Click to set Boat position.");
+        itemID = 2; //sets itemID to ID for boat
+    }
+    @FXML protected void mousePosition(MouseEvent event) {
+        	mousex = (int) (event.getScreenX()/16-34); // divide by 16 to make the coordinates the correct scale, -34 to correct for size of screen
+        	mousey = (int) (event.getScreenY()/16-10); 
+            drawItem(itemID,mousex,mousey); //draws the item to the mouseclick
+            
         }
-
+    
 	
-	public void initialize() {
-		graphics = MapCanvas.getGraphicsContext2D();
-		modelMap.draw(graphics);
-
-	}
+	private GraphicsContext graphics;
 	
+	private ModelMap modelMap;
 	
 	public Controller() {
 		modelMap = new ModelMap();
@@ -66,6 +72,13 @@ public class Controller {
 	}
 	
 	private void drawItem(int x, int y) { //draw items
+	public void initialize() {
+		graphics = MapCanvas.getGraphicsContext2D();
+		modelMap.draw(graphics);
+
+	}
+	
+	private void drawItem(int itemID, int x, int y) { //draw items
 		switch (itemID) {
 		case 0: actiontarget.setText("No item selected");
 				break;
