@@ -19,6 +19,8 @@ public class Controller {
     @FXML private Text actiontarget;
     
     @FXML private ImageView item; //new image view
+	private GraphicsContext graphics;
+	private ModelMap modelMap;
     private Image axeImage;
     private Image boatImage;
     public int mousex;
@@ -39,22 +41,19 @@ public class Controller {
             drawItem(itemID,mousex,mousey); //test draw s axe to the middle of the map
             
         }
-    
-	
-	private GraphicsContext graphics;
-	
-	private ModelMap modelMap;
-	
-	public Controller() {
-		modelMap = new ModelMap();
-		axeImage = SwingFXUtils.toFXImage(Content.ITEMS[1][1],null); // assign converted buffered image to axeimage
-		boatImage = SwingFXUtils.toFXImage(Content.ITEMS[1][0],null); //assign converted boat buffered image to boat image
-	}
+
 	
 	public void initialize() {
 		graphics = MapCanvas.getGraphicsContext2D();
 		modelMap.draw(graphics);
 
+	}
+	
+	
+	public Controller() {
+		modelMap = new ModelMap();
+		axeImage = SwingFXUtils.toFXImage(Content.ITEMS[1][1],null); // assign converted buffered image to axeimage
+		boatImage = SwingFXUtils.toFXImage(Content.ITEMS[1][0],null); //assign converted boat buffered image to boat image
 	}
 	
 	private void drawItem(int itemID, int x, int y) { //draw items
