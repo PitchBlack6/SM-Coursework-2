@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 public class ModelMap {
 	
 	private int tileSize; 
-	private int [][] map;
+	public int [][] map;
 	private Image [][] tileType;
 
 	private TileMap tileMap;
