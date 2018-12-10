@@ -27,17 +27,24 @@ public class Controller {
     public int mousey;
     public int itemID = 0;
     
+    
     @FXML protected void setAxe(ActionEvent event) {
         actiontarget.setText("Click to set Axe position.");
         itemID = 1;
+          
     }
     @FXML protected void setBoat(ActionEvent event) {
         actiontarget.setText("Click to set Boat position.");
         itemID = 2;
+       
     }
     @FXML protected void mousePosition(MouseEvent event) {
-        	mousex = (int) (event.getScreenX()/16-34); 
-        	mousey = (int) (event.getScreenY()/16-10); 
+        	int x = (int) (event.getSceneX()/16); 
+        	int y = (int) (event.getSceneY()/16);
+        	if(checkTile(x,y)) {
+        		mousex = x;
+        		mousey = y;
+        	}
             drawItem(itemID,mousex,mousey); //test draw s axe to the middle of the map
             
         }
@@ -70,6 +77,12 @@ public class Controller {
 				break;
 		}
 	}
+	
+	private boolean checkTile(int x, int y) {
+		return modelMap.map[y][x] < 20;
+	}
+	
+	
 	
 	
 }
