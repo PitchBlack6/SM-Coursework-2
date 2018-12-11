@@ -19,12 +19,25 @@ public class Controller {
     @FXML private Text actiontarget;
     
     @FXML private ImageView item; //new image view
-    private Image axeImage;
-    private Image boatImage;
+  
     public int mousex;
     public int mousey;
     public int itemID = 0; //creates flag to track current item ID
     
+    private GraphicsContext graphics;
+	private ModelMap modelMap;
+	
+	
+	public Controller() {
+		modelMap = new ModelMap();
+	}
+    
+	
+	public void initialize() {
+		graphics = MapCanvas.getGraphicsContext2D();
+		modelMap.draw(graphics);
+
+	}
     
     @FXML protected void setAxe(ActionEvent event) {
         actiontarget.setText("Click to set Axe position.");
@@ -33,69 +46,18 @@ public class Controller {
     }
     @FXML protected void setBoat(ActionEvent event) {
         actiontarget.setText("Click to set Boat position.");
-        itemID = 2;
-       
-    }
-    @FXML protected void mousePosition(MouseEvent event) {
-        	int x = (int) (event.getSceneX()/16); 
-        	int y = (int) (event.getSceneY()/16);
-        	if(checkTile(x,y)) {
-        		mousex = x;
-        		mousey = y;
-        		drawItem(mousex,mousey); //test draw s axe to the middle of the map
-        	}
-        	else {
-        		actiontarget.setText("Invalid placement");
-        	}
-        itemID = 1; //sets itemID to ID for axe
-    }
-    @FXML protected void setBoat(ActionEvent event) {
-        actiontarget.setText("Click to set Boat position.");
         itemID = 2; //sets itemID to ID for boat
     }
-    @FXML protected void mousePosition(MouseEvent event) {
-        	mousex = (int) (event.getScreenX()/16-34); // divide by 16 to make the coordinates the correct scale, -34 to correct for size of screen
-        	mousey = (int) (event.getScreenY()/16-10); 
-            drawItem(itemID,mousex,mousey); //draws the item to the mouseclick
-            
-        }
     
-	
-	private GraphicsContext graphics;
-	
-	private ModelMap modelMap;
-	
-	public Controller() {
-		modelMap = new ModelMap();
-		axeImage = SwingFXUtils.toFXImage(Content.ITEMS[1][1],null); // assign converted buffered image to axeimage
-		boatImage = SwingFXUtils.toFXImage(Content.ITEMS[1][0],null); //assign converted boat buffered image to boat image
-	}
-	
-	private void drawItem(int x, int y) { //draw items
-	public void initialize() {
-		graphics = MapCanvas.getGraphicsContext2D();
-		modelMap.draw(graphics);
-
-	}
-	
-	private void drawItem(int itemID, int x, int y) { //draw items
-		switch (itemID) {
-		case 0: actiontarget.setText("No item selected");
-				break;
-		case 1: graphics.drawImage(axeImage, x*16, y*16);
-				actiontarget.setText("Placed Axe.");
-				break;
-		case 2: graphics.drawImage(boatImage, x*16, y*16);
-				actiontarget.setText("Placed Boat.");
-				break;
-		}
-	}
-	
-	private boolean checkTile(int x, int y) {
-		return modelMap.map[y][x] < 20;
-	}
-	
-	
-	
-	
+    @FXML protected void saveLocation(ActionEvent event) {
+        actiontarget.setText("Location saved.");
+          
+    }
+    
+    
+    @FXML protected void mousePosition(MouseEvent event) {
+        	int col = (int) (event.getSceneX()/16); 
+        	int row = (int) (event.getSceneY()/16);
+        	modelMap.setItemLocation(itemID, row, col, graphics);
+    }
 }
