@@ -23,8 +23,7 @@ public class Controller {
     public int mousex;
     public int mousey;
     public int itemID = 0; //creates flag to track current item ID
-    
-    private GraphicsContext graphics;
+  
 	private ModelMap modelMap;
 	
 	
