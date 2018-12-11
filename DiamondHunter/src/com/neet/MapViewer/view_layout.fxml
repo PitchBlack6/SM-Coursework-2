@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.canvas.*?>
 <?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.neet.MapViewer.Controller">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.MapViewer.Controller">
   <center>
     <Canvas fx:id="MapCanvas" height="640.0" onMouseClicked="#mousePosition" width="640.0" BorderPane.alignment="CENTER" />
   </center>
   <right>
     <Pane prefHeight="640.0" prefWidth="197.0" BorderPane.alignment="CENTER">
       <children>
-        <Button layoutX="38.0" layoutY="25.0" mnemonicParsing="false" onAction="#setAxe" text="Set Position of Axe" />
-        <Button layoutX="37.0" layoutY="78.0" mnemonicParsing="false" onAction="#setBoat" text="Set Position of Boat" />
-        <Text fx:id="actiontarget" layoutX="27.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" />
+        <Button layoutX="26.0" layoutY="135.0" mnemonicParsing="false" onAction="#setAxe" text="Set Position of Axe" />
+        <Button layoutX="24.0" layoutY="186.0" mnemonicParsing="false" onAction="#setBoat" text="Set Position of Boat" />
+        <Text fx:id="actiontarget" layoutX="33.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="131.0" />
+            <Button layoutX="41.0" layoutY="471.0" mnemonicParsing="false" onAction="#saveLocation" prefHeight="35.0" prefWidth="113.0" text="Save Location" />
+            <Button layoutX="64.0" layoutY="232.0" mnemonicParsing="false" onAction="#setDefault" text="Default" />
       </children>
     </Pane>
   </right>

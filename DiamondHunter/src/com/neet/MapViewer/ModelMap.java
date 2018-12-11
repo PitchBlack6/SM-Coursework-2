@@ -7,8 +7,9 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+
+
 public class ModelMap {
-	
 	private int tileSize; 
 	public int [][] map;
 	private Image [][] tileType;
@@ -23,6 +24,7 @@ public class ModelMap {
 	private int boatCol;
 	
 	public ModelMap() {
+		
 		tileSize = 16;
 		tileMap = new TileMap(tileSize);
 		tileMap.loadTiles("/Tilesets/testtileset.gif");
@@ -92,22 +94,8 @@ public class ModelMap {
 		return map[row][col] < 20;
 	}
 	
-	
-	public void setItemLocation(int itemID, int row, int col, GraphicsContext a) {
-		if(checkTile(row,col)) { //check if location correct
-			if (itemID == 1) {// checks what item
-				a.drawImage(tileType[map[axeRow][axeCol]/20][map[axeRow][axeCol]%20], axeCol*tileSize, axeRow*tileSize); //replaces the item with
-																														//a grass tile
-				axeRow = row;
-				axeCol = col;
-				a.drawImage(axeImage, axeCol*tileSize, axeRow*tileSize);
-			}
-			else if (itemID == 2) {
-				a.drawImage(tileType[map[boatRow][boatCol]/20][map[boatRow][boatCol]%20], boatCol*tileSize, boatRow*tileSize);
-				boatRow = row;
-				boatCol = col;
-				a.drawImage(boatImage, boatCol*tileSize, boatRow*tileSize);
-			}
-    	}
 	}
 }
+
+
+

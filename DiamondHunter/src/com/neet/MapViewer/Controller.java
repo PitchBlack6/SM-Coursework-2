@@ -1,15 +1,16 @@
 package com.neet.MapViewer;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Controller {
 	
@@ -30,8 +31,7 @@ public class Controller {
 	public Controller() {
 		modelMap = new ModelMap();
 	}
-    
-	
+  
 	public void initialize() {
 		graphics = MapCanvas.getGraphicsContext2D();
 		modelMap.draw(graphics);
@@ -46,17 +46,9 @@ public class Controller {
     @FXML protected void setBoat(ActionEvent event) {
         actiontarget.setText("Click to set Boat position.");
         itemID = 2; //sets itemID to ID for boat
-    }
-    
-    @FXML protected void saveLocation(ActionEvent event) {
-        actiontarget.setText("Location saved.");
-          
-    }
-    
     
     @FXML protected void mousePosition(MouseEvent event) {
         	int col = (int) (event.getSceneX()/16); 
         	int row = (int) (event.getSceneY()/16);
-        	modelMap.setItemLocation(itemID, row, col, graphics);
     }
 }
