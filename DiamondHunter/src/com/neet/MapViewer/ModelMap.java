@@ -19,9 +19,6 @@ public class ModelMap {
 	private TileMap tileMap;
 	
 	private int axeRow;
-	
-
-
 	private int axeCol;
 	private int boatRow;
 	private int boatCol;
@@ -97,49 +94,6 @@ public class ModelMap {
 		return map[row][col] < 20;
 	}
 	
-	
-  	public String setItemLocation(int itemID, int row, int col, GraphicsContext a) {
-        if(checkTile(row,col)) { //check if location correct
-            switch (itemID) {
-            	case 0 : return "No item selected";
-                case 1: {// checks what item
-                    a.drawImage(tileType[map[axeRow][axeCol]/20][map[axeRow][axeCol]%20], axeCol*tileSize, axeRow*tileSize); //replaces the item with
-                                                                                                                            //a grass tile
-                    axeRow = row;
-                    axeCol = col;
-                    a.drawImage(axeImage, axeCol*tileSize, axeRow*tileSize);
-                    return "Placed axe";
-                }
-                case 2: {
-                    a.drawImage(tileType[map[boatRow][boatCol]/20][map[boatRow][boatCol]%20], boatCol*tileSize, boatRow*tileSize);
-                    boatRow = row;
-                    boatCol = col;
-                    a.drawImage(boatImage, boatCol*tileSize, boatRow*tileSize);
-                    return "Placed boat";
-                }
-            }
-        }
-        return "Invalid placement";
-    }
-	
-	
-	public int getAxeRow() {
-		return axeRow;
-	}
-
-
-	public int getAxeCol() {
-		return axeCol;
-	}
-
-
-	public int getBoatRow() {
-		return boatRow;
-	}
-
-
-	public int getBoatCol() {
-		return boatCol;
 	}
 }
 
