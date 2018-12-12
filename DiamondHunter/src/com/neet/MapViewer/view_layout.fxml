@@ -1,25 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.canvas.*?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.neet.MapViewer.Controller">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.MapViewer.Controller">
   <center>
     <Canvas fx:id="MapCanvas" height="640.0" onMouseClicked="#mousePosition" width="640.0" BorderPane.alignment="CENTER" />
   </center>
   <right>
-    <Pane prefHeight="640.0" prefWidth="197.0" BorderPane.alignment="CENTER">
+    <Pane prefHeight="640.0" prefWidth="197.0" style="-fx-background-color: #B0e0E6;" BorderPane.alignment="CENTER">
       <children>
-        <Button layoutX="38.0" layoutY="25.0" mnemonicParsing="false" onAction="#setAxe" text="Set Position of Axe" />
-        <Button layoutX="37.0" layoutY="78.0" mnemonicParsing="false" onAction="#setBoat" text="Set Position of Boat" />
-        <Text fx:id="actiontarget" layoutX="27.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" />
+        <Button layoutX="39.0" layoutY="170.0" mnemonicParsing="false" onAction="#setAxe" prefHeight="40.0" prefWidth="117.0" style="-fx-background-color: #FFEBCD;" text="Set Axe" textFill="#0a0909">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="Impact" size="25.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
+        <Button layoutX="39.0" layoutY="232.0" mnemonicParsing="false" onAction="#setBoat" prefHeight="33.0" prefWidth="117.0" style="-fx-background-color: #FFEBCD;" text="Set Boat" textFill="#0a0909">
+               <font>
+                  <Font name="Impact" size="24.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
+        <Text fx:id="actiontarget" layoutX="28.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" textAlignment="CENTER" wrappingWidth="151.0">
+               <font>
+                  <Font name="OCR A Extended" size="19.0" />
+               </font></Text>
+            <Button layoutX="56.0" layoutY="474.0" mnemonicParsing="false" onAction="#saveLocation" prefHeight="49.0" prefWidth="95.0" style="-fx-background-color: #FFEBCD;" text="Save" textFill="#0a0909">
+               <font>
+                  <Font name="Impact" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
+            <Button layoutX="40.0" layoutY="288.0" mnemonicParsing="false" onAction="#setDefault" prefHeight="41.0" prefWidth="115.0" style="-fx-background-color: #FFEBCD;" text="Default" textAlignment="CENTER" textFill="#0a0909">
+               <font>
+                  <Font name="Impact" size="25.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
+            <Label layoutX="6.0" layoutY="14.0" prefHeight="91.0" prefWidth="184.0" style="-fx-alignment: center;" text="DIAMOND&#10;HUNTER" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+               <font>
+                  <Font name="Gill Sans Ultra Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="92.0" style="-fx-alignment: center;" text="Map Viewer">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="22.0" />
+               </font>
+            </Label>
+            <Button layoutX="56.0" layoutY="539.0" mnemonicParsing="false" onAction="#startGame" prefHeight="47.0" prefWidth="96.0" style="-fx-background-color: #FFEBCD;" text="Start" textFill="#0a0909">
+               <font>
+                  <Font name="Impact" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
       </children>
     </Pane>
   </right>
