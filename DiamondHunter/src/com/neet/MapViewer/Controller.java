@@ -91,5 +91,6 @@ public class Controller {
         	int row = (int) (event.getSceneY()/16);
         	String message = modelMap.setItemLocation(itemID, row, col, graphics);
         	actiontarget.setText(message);
+        	itemID = 0;
     }
 }
