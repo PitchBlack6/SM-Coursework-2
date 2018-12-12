@@ -3,25 +3,32 @@ package com.neet.MapViewer;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 public class MapMain extends Application{
 	
-	public Stage primaryStage; 
-	private BorderPane root;
+	public static String[] args;
+	
+	public static Stage primaryStage; 
+	private BorderPane root;		
 
 	@Override
-	public void start(Stage primaryStage) {
-		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("MapViewer");
+	public void start(Stage pStage) {
+		primaryStage = pStage;
+		primaryStage.setTitle("MapViewer");
 		root = new BorderPane();
+		
+		Platform.setImplicitExit(false);
 		
 		initLayout();
 		
 		Scene scene = new Scene(root);
+		primaryStage.setResizable(false);
 		primaryStage.setScene(scene); 
+		primaryStage.setOnCloseRequest(event -> {Platform.setImplicitExit(true); });
 		primaryStage.show();
 
 	}
