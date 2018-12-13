@@ -7,6 +7,9 @@ package com.neet.DiamondHunter.GameState;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.neet.DiamondHunter.Entity.Diamond;
@@ -173,16 +176,31 @@ public class PlayState extends GameState {
 	private void populateItems() {
 		
 		Item item;
-		
-		item = new Item(tileMap);
-		item.setType(Item.AXE);
-		item.setTilePosition(26, 37);
-		items.add(item);
-		
-		item = new Item(tileMap);
-		item.setType(Item.BOAT);
-		item.setTilePosition(12, 4);
-		items.add(item);
+		int AxeX, AxeY, BoatX, BoatY;
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("Location.txt"));
+			String[] tokens = br.readLine().split(" ");
+			AxeX = Integer.parseInt(tokens[0]);
+			AxeY = Integer.parseInt(tokens[1]);
+			
+			tokens = br.readLine().split(" ");
+			BoatX = Integer.parseInt(tokens[0]);
+			BoatY = Integer.parseInt(tokens[1]);
+			
+			item = new Item(tileMap);
+			item.setType(Item.AXE);
+			item.setTilePosition(AxeX, AxeY); //default position (26,37)
+			items.add(item);
+			
+			item = new Item(tileMap);
+			item.setType(Item.BOAT);
+			item.setTilePosition(BoatX, BoatY); //default position (12,4)
+			items.add(item);
+			
+			br.close();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
