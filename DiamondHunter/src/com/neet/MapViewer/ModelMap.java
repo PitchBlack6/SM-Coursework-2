@@ -19,19 +19,19 @@ public class ModelMap {
 	private TileMap tileMap;
 	
 	private int axeRow;
-	
-
-
 	private int axeCol;
 	private int boatRow;
 	private int boatCol;
 	
+	/**
+     * Loads the tiles and map and assigns the items to axeImage/boatImage
+     */
 	public ModelMap() {
 		
-		tileSize = 16;
-		tileMap = new TileMap(tileSize);
-		tileMap.loadTiles("/Tilesets/testtileset.gif");
-		tileMap.loadMap("/Maps/testmap.map");
+		tileSize = 16;									//setting the tilesize to 16 pixels
+		tileMap = new TileMap(tileSize);				
+		tileMap.loadTiles("/Tilesets/testtileset.gif"); //loads the tile file
+		tileMap.loadMap("/Maps/testmap.map");			//loads the map file
 
 		loadTileFile();
 		loadMapFile();
@@ -40,7 +40,9 @@ public class ModelMap {
 		boatImage = SwingFXUtils.toFXImage(Content.ITEMS[1][0],null); //assign converted boat buffered image to boat image
 	}
 	
-	
+	/**
+     * loads the tiles
+     */
 	private void loadTileFile() {
 		Tile[][] mytile = tileMap.getTiles();
 		tileType = new Image[mytile.length][mytile[0].length];
@@ -56,53 +58,50 @@ public class ModelMap {
 		
 	}
 	
+	/**
+     * Loads the map
+     */
 	private void loadMapFile() {
 		map = tileMap.getMap();
 	}
-	
-	
-	
-	public void draw(GraphicsContext a) {// make drawMap
+
+	/**
+     * Draws the map
+     */
+	public void draw(GraphicsContext a) {
 		for (int i=0; i<map.length; i++) {
 			for (int j=0; j<map.length; j++) {
 				int temp2 = map[j][i];
-				int row = temp2/20;
-				int col = temp2%20;
+				int row = temp2/20;				//row is obtained by dividing the number of row with the array size in the tileset
+				int col = temp2%20;				//row is obtained by finding the modulus of the number of row with the array size in the tileset
 				a.drawImage(tileType[row][col], i*tileSize, j*tileSize);
 				
 			}
 			
 		}
 		
-	}
-	
-
-	
-//	private void drawItem(int itemID, int x, int y) { //draw items
-//		switch (itemID) {
-//		case 0: actiontarget.setText("No item selected");
-//				break;
-//		case 1: graphics.drawImage(axeImage, x*16, y*16);
-//				actiontarget.setText("Placed Axe.");
-//				break;
-//		case 2: graphics.drawImage(boatImage, x*16, y*16);
-//				actiontarget.setText("Placed Boat.");
-//				break;
-//		}
-//	}
-	
-	
-	
+	}	
+	/**
+     * Checks if the tile is suitable to place items (e.g not on trees and water)
+     * @param row
+     * @param col
+     */
   	private boolean checkTile(int row, int col) {
-		return map[row][col] < 20;
+		return map[row][col] < 20;		//returns true if tile number is lesser than 20 in the tileset
 	}
 	
-	
+  	/**
+     * Replaces the old item sprite if placed and places the item on the new selected tile
+     * @param itemID
+     * @param row
+     * @param col
+     * @param GraphicsContext
+     */
   	public String setItemLocation(int itemID, int row, int col, GraphicsContext a) {
         if(checkTile(row,col)) { //check if location correct
-            switch (itemID) {
+            switch (itemID) {// checks what item
             	case 0 : return "No item selected";
-                case 1: {// checks what item
+                case 1: {
                     a.drawImage(tileType[map[axeRow][axeCol]/20][map[axeRow][axeCol]%20], axeCol*tileSize, axeRow*tileSize); //replaces the item with
                                                                                                                             //a grass tile
                     axeRow = row;
@@ -122,22 +121,30 @@ public class ModelMap {
         return "Invalid placement";
     }
 	
-	
+  	/**
+     * Returns axeRow
+     */
 	public int getAxeRow() {
 		return axeRow;
 	}
 
-
+	/**
+     * Returns axeCol
+     */
 	public int getAxeCol() {
 		return axeCol;
 	}
 
-
+	/**
+     * Returns boatRow
+     */
 	public int getBoatRow() {
 		return boatRow;
 	}
 
-
+	/**
+     * Returns boatCol
+     */
 	public int getBoatCol() {
 		return boatCol;
 	}

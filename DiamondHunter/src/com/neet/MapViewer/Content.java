@@ -1,5 +1,5 @@
 package com.neet.MapViewer;
-
+//this class loads the sprites of the images and splits them
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
