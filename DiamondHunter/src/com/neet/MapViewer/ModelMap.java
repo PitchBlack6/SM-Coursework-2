@@ -15,6 +15,8 @@ public class ModelMap {
 	private Image [][] tileType;
 	private Image axeImage;
 	private Image boatImage;
+	private Image diamondImage;
+	private Image playerImage;
 
 	private TileMap tileMap;
 	
@@ -22,6 +24,12 @@ public class ModelMap {
 	private int axeCol;
 	private int boatRow;
 	private int boatCol;
+	
+	//initializing the coordinates of the diamonds in the map
+	public static final int[][] diamond_coords = new int [][] { {20,20}, {12,36}, {28,4}, {4,34}, {28,19}, {35,26}, {38,36}, {27,28}, {20,30},
+																{14,25}, {4,21}, {9,14}, {4,3}, {20,14}, {13,20} };
+			
+	
 	
 	/**
      * Loads the tiles and map and assigns the items to axeImage/boatImage
@@ -36,8 +44,11 @@ public class ModelMap {
 		loadTileFile();
 		loadMapFile();
 		
+		
 		axeImage = SwingFXUtils.toFXImage(Content.ITEMS[1][1],null); // assign converted buffered image to axeimage
 		boatImage = SwingFXUtils.toFXImage(Content.ITEMS[1][0],null); //assign converted boat buffered image to boat image
+		diamondImage = SwingFXUtils.toFXImage(Content.DIAMONDS[0][3], null); //assign converted diamond buffered image to diamond image
+		playerImage = SwingFXUtils.toFXImage(Content.PLAYER[0][0], null); //assign converted player buffered image to player image
 	}
 	
 	/**
@@ -80,7 +91,15 @@ public class ModelMap {
 			
 		}
 		
-	}	
+		for (int dRow=0; dRow <diamond_coords.length ; dRow++) {
+				a.drawImage(diamondImage, diamond_coords[dRow][1]*tileSize, diamond_coords[dRow][0]*tileSize); //draws the diamonds on the map viewer
+			}
+		
+		a.drawImage(playerImage, 17*tileSize,  17*tileSize); //draws the character on the map viewer
+		
+	}
+	
+	
 	/**
      * Checks if the tile is suitable to place items (e.g not on trees and water)
      * @param row
@@ -148,6 +167,9 @@ public class ModelMap {
 	public int getBoatCol() {
 		return boatCol;
 	}
+	
+		
+	
 }
 
 

@@ -7,7 +7,9 @@ import javax.imageio.ImageIO;
 public class Content {
 	
 
-	public static BufferedImage[][] ITEMS = load("/Sprites/items.gif", 16, 16);
+	public static BufferedImage[][] ITEMS = load("/Sprites/items.gif", 16, 16); 			//loads the axe and boat
+	public static BufferedImage[][] DIAMONDS = load("/Sprites/diamond.gif", 16, 16); 		//loads the diamonds
+	public static BufferedImage[][] PLAYER = load("/Sprites/playersprites.gif", 16, 16);	//loads the character
 	
 	public static BufferedImage[][] load(String s, int w, int h) {
 		BufferedImage[][] ret;
